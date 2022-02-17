@@ -31,55 +31,15 @@ from typing import Any, List
 from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('HTTP://127.0.0.1:7545'))
 ################################################################################
-# Step 1:
-# Import Ethereum Transaction Functions into the Fintech Finder Application
+# 4. Within the Streamlit sidebar section of code, create a variable named `account`. Set this variable equal to a call on the `generate_account`
+# function. This function will create the Fintech Finder customer’s (in this case, your) HD wallet and Ethereum account.
 
-# In this section, you'll import several functions from the `crypto_wallet.py`
-# script into the file `fintech_finder.py`, which contains code for Fintech
-# Finder’s customer interface, in order to add wallet operations to the
-# application. For this section, you will assume the perspective of a Fintech
-# Finder customer (i.e., you’ll provide your Ethereum wallet and account
-# information to the application).
-
-# Complete the following steps:
-
-# 1. Review the code contained in the `crypto_wallet.py` script file. Note that
-# the Ethereum transaction functions that you have built throughout this
-# module-including `wallet`, `wallet.derive_acount`, `get_balance`, `fromWei`,
-# `estimateGas`, `sendRawTransaction`, and others&mdash;have now been
-# incorporated into Python functions that allow you to automate the process of
-# accessing them.
-
-# 2. Add your mnemonic seed phrase (provided by Ganache) to the starter code’s `SAMPLE.env` file.
-# When the information has been added, rename the file `.env`.
-
-# 3. Import the following functions from the `crypto_wallet.py` file:
-# * `generate_account`
-# * `get_balance`
-# * `send_transaction`
-
-# 4. Within the Streamlit sidebar section of code, create a variable named
-# `account`. Set this variable equal to a call on the `generate_account`
-# function. This function will create the Fintech Finder customer’s (in this
-# case, your) HD wallet and Ethereum account.
-
-# 5. Within this same section of the `fintech_finder.py` file, define a
-# new `st.sidebar.write` function that will display the balance of the
-# customer’s account. Inside this function, call the `get_balance` function
-# and pass it your Ethereum `account.address`.
-
+# 5. Within this same section of the `fintech_finder.py` file, define a new `st.sidebar.write` function that will display the balance of the
+# customer’s account. Inside this function, call the `get_balance` function and pass it your Ethereum `account.address`.
 
 ################################################################################
-# Step 1 - Part 3:
-# Import the following functions from the `crypto_wallet.py` file:
-# * `generate_account`
-# * `get_balance`
-# * `send_transaction`
-
-# @TODO:
-# From `crypto_wallet.py import the functions generate_account, get_balance,
-#  and send_transaction
-# YOUR CODE HERE
+# From `crypto_wallet.py import the functions generate_account, get_balance,and send_transaction
+from crypto_wallet import generate_account, get_balance, send_transaction
 
 ################################################################################
 # Fintech Finder Candidate Information
