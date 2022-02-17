@@ -15,7 +15,7 @@ Upon completion of the transaction in the web application, the transaction is po
 
 
 Account information following transaction posting.
-![Ganache Account](Images/ganache-account.jpeg)
+![Ganache Account](Images/account_info.jpg)
 
 List of transactions for the account.
 ![Ganache Transactions](Images/ganache-transactions.jpeg)
