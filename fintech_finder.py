@@ -77,6 +77,7 @@ account = generate_account()
 
 ##########################################
 # Write the client's Ethereum account address to the sidebar
+st.sidebar.markdown("# Account Information")
 st.sidebar.markdown( "### Account Adress")
 st.sidebar.write(account.address)
 
@@ -94,21 +95,25 @@ person = st.sidebar.selectbox('Select a Person', people)
 # Create a input field to record the number of hours the candidate worked
 hours = st.sidebar.number_input("Number of Hours")
 
-st.sidebar.markdown("## Candidate Name, Hourly Rate, and Ethereum Address")
+st.sidebar.markdown( "------")
+st.sidebar.markdown("# Candidate Information")
 
 # Identify the FinTech Hire candidate
 candidate = candidate_database[person][0]
 
 # Write the Fintech Finder candidate's name to the sidebar
+st.sidebar.markdown("### Candidate Name")
 st.sidebar.write(candidate)
 
 # Identify the FinTech Finder candidate's hourly rate
+st.sidebar.markdown("### Hourly Rate")
 hourly_rate = candidate_database[person][3]
 
 # Write the inTech Finder candidate's hourly rate to the sidebar
 st.sidebar.write(hourly_rate)
 
 # Identify the FinTech Finder candidate's Ethereum Address
+st.sidebar.markdown("### Candidate Address")
 candidate_address = candidate_database[person][1]
 
 # Write the inTech Finder candidate's Ethereum Address to the sidebar
@@ -123,21 +128,6 @@ st.sidebar.markdown("## Total Wage in Ether")
 
 # Complete the following steps:
 
-# 1. Fintech Finder customers will select a fintech professional from the
-# application interface’s drop-down menu, and then input the amount of time for
-# which they’ll hire the worker. Code the application so that once a customer
-# completes these steps, the application will calculate the amount that the
-# worker will be paid in ether. To do so, complete the following steps:
-
-    # * Write the equation that calculates the candidate’s wage. This equation
-    #  should assess the candidate’s hourly rate from the candidate database
-    # (`candidate_database[person][3]`) and then multiply this hourly rate by
-    # the value of the `hours` variable. Save this calculation’s output as a
-    # variable named `wage`.
-
-    # * Write the `wage` variable to the Streamlit sidebar by
-    # using `st.sidebar.write`.
-
 # 2. Now that the application can calculate a candidate’s wage, write the code
 # that will allow a customer (you, in this case) to send an Ethereum blockchain
 # transaction that pays the hired candidate. To accomplish this, locate the
@@ -150,51 +140,25 @@ st.sidebar.markdown("## Total Wage in Ether")
         # - Your Ethereum `account` information. (Remember that this `account`
         # instance was created when the `generate_account` function was called.)
         #  From the `account` instance, the application will be able to access the
-        #  `account.address` information that is needed to populate the `from` data
-        # attribute in the raw transaction.
+        #  `account.address` information that is needed to populate the `from` data attribute in the raw transaction.
         #- The `candidate_address` (which will be created and identified in the
-        # sidebar when a customer selects a candidate). This will populate the `to`
-        # data attribute in the raw transaction.
+        # sidebar when a customer selects a candidate). This will populate the `to` data attribute in the raw transaction.
         # - The `wage` value. This will be passed to the `toWei` function to
         # determine the wei value of the payment in the raw transaction.
 
     # * Save the transaction hash that the `send_transaction` function returns
-    # as a variable named `transaction_hash`, and have it display on the
-    # application’s web interface.
+    # as a variable named `transaction_hash`, and have it display on the application’s web interface.
 
 ##########################################
-# Step 2 - Part 1:
-# * Write the equation that calculates the candidate’s wage. This equation
-# should assess the candidate’s hourly rate from the candidate database
-# (`candidate_database[person][3]`) and then multiply this hourly rate by
-# the value of the `hours` variable. Save this calculation’s output as a
-# variable named `wage`.
-# * Write the `wage` variable to the Streamlit sidebar by using `st.sidebar.write`.
-
-# @TODO
 # Calculate total `wage` for the candidate by multiplying the candidate’s hourly
-# rate from the candidate database (`candidate_database[person][3]`) by the
-# value of the `hours` variable
-# YOUR CODE HERE
+# rate from the candidate database (`candidate_database[person][3]`) by the value of the `hours` variable
+wage = hourly_rate * hours
 
-# @TODO
 # Write the `wage` calculation to the Streamlit sidebar
-# YOUR CODE HERE
+st.sidebar.write(wage)
 
 ##########################################
 # Step 2 - Part 2:
-# * Call the `send_transaction` function and pass it three parameters:
-    # - Your Ethereum `account` information. (Remember that this `account`
-    # instance was created when the `generate_account` function was called.)
-    #  From the `account` instance, the application will be able to access the
-    #  `account.address` information that is needed to populate the `from` data
-    # attribute in the raw transaction.
-    #- The `candidate_address` (which will be created and identified in the
-    # sidebar when a customer selects a candidate). This will populate the `to`
-    # data attribute in the raw transaction.
-    # - The `wage` value. This will be passed to the `toWei` function to
-    # determine the wei value of the payment in the raw transaction.
-
 # * Save the transaction hash that the `send_transaction` function returns as a
 # variable named `transaction_hash`, and have it display on the application’s
 # web interface.
@@ -204,9 +168,10 @@ if st.sidebar.button("Send Transaction"):
 
     # @TODO
     # Call the `send_transaction` function and pass it 3 parameters:
-    # Your `account`, the `candidate_address`, and the `wage` as parameters
+    # `account`,  `candidate_address`, and  `wage` as parameters
     # Save the returned transaction hash as a variable named `transaction_hash`
-    # YOUR CODE HERE
+    trans_send = send_transaction(account, candidate_address, wage)
+    transaction_hash = 
 
     # Markdown for the transaction hash
     st.sidebar.markdown("#### Validated Transaction Hash")
