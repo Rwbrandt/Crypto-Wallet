@@ -1,15 +1,6 @@
 # Cryptocurrency Wallet
 
 ################################################################################
-# For this Challenge, you will assume the perspective of a Fintech Finder
-# customer in order to do the following:
-
-# * Generate a new Ethereum account instance by using your mnemonic seed phrase
-# (which you created earlier in the module).
-
-# * Fetch and display the account balance associated with your Ethereum account
-# address.
-
 # * Calculate the total value of an Ethereum transaction, including the gas
 # estimate, that pays a Fintech Finder candidate for their work.
 
@@ -80,33 +71,20 @@ st.text(" \n")
 ################################################################################
 # Streamlit Sidebar Code - Start
 
-st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
-
 ##########################################
-# Step 1 - Part 4:
-# Create a variable named `account`. Set this variable equal to a call on the
-# `generate_account` function. This function will create the Fintech Finder
-# customer’s (in this case, your) HD wallet and Ethereum account.
-
-# @TODO:
 #  Call the `generate_account` function and save it as the variable `account`
-# YOUR CODE HERE
+account = generate_account()
 
 ##########################################
-
 # Write the client's Ethereum account address to the sidebar
+st.sidebar.markdown( "### Account Adress")
 st.sidebar.write(account.address)
 
 ##########################################
-# Step 1 - Part 5:
-# Define a new `st.sidebar.write` function that will display the balance of the
-# customer’s account. Inside this function, call the `get_balance` function and
-#  pass it your Ethereum `account.address`.
-
-# @TODO
 # Call `get_balance` function and pass it your account address
 # Write the returned ether balance to the sidebar
-# YOUR CODE HERE
+st.sidebar.markdown("### Account Ether Balance")
+ether = st.sidebar.write(get_balance(w3, account.address))
 
 ##########################################
 
