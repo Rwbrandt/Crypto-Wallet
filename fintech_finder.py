@@ -150,7 +150,7 @@ if st.sidebar.button("Send Transaction"):
     # @TODO
     # Call the `send_transaction` function and pass it 3 parameters: `account`,  `candidate_address`, and  `wage` as parameters
     # Save the returned transaction hash as a variable named `transaction_hash`
-    trans_send = send_transaction(account, candidate_address, wage)
+    trans_send = send_transaction(w3, account, candidate_address, wage)
     transaction_hash = trans_send
 
     # Markdown for the transaction hash
